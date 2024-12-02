@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class PhotoGalleryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        getSupportActionBar()?.hide()
+        getSupportActionBar()?.hide() // Этого нет в учебнике, я для себя делал, так как меня раздражало название приложения сверху
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_photo_gallery)
