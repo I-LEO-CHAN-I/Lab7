@@ -11,6 +11,7 @@ class PhotoGalleryViewModel(private val app: Application) : AndroidViewModel(app
     val galleryItemLiveData : LiveData<List<GalleryItem>>
     private val flickrFetchr = FlickrFetchr()
     private val mutableSearchTerm = MutableLiveData<String>()
+    private val photoRepository = PhotoRepository.get()
 
     val searchTerm: String get() = mutableSearchTerm.value ?: ""
 
