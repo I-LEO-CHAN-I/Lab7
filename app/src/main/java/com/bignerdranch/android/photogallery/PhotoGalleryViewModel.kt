@@ -5,9 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class PhotoGalleryViewModel(private val app: Application) : AndroidViewModel(app) {
 
+    val photoRepository : PhotoRepository = PhotoRepository.get()
     val galleryItemLiveData : LiveData<List<GalleryItem>>
     private val flickrFetchr = FlickrFetchr()
     private val mutableSearchTerm = MutableLiveData<String>()
@@ -30,5 +33,11 @@ class PhotoGalleryViewModel(private val app: Application) : AndroidViewModel(app
     fun fetchPhotos(query: String = "") {
         QueryPreferences.setStoredQuery(app, query)
         mutableSearchTerm.value = query
+    }
+
+    fun clearDB() {
+        viewModelScope.launch {
+            photoRepository.delPhotos()
+        }
     }
 }

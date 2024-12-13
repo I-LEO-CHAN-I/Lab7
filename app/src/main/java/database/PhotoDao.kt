@@ -1,22 +1,23 @@
 package database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
 import com.bignerdranch.android.photogallery.GalleryItem
 
 @Dao
 interface PhotoDao {
+
     @Query("SELECT * FROM galleryitem")
-    fun getPhoto(): List<GalleryItem>
+    fun getPhotos(): LiveData<List<GalleryItem>>
+
+    @Query("SELECT * FROM galleryitem WHERE id=(:id)")
+    fun getPhoto(id: String): LiveData<GalleryItem?>
 
     @Query("DELETE FROM galleryitem")
-    fun clearPhoto(): Void
-
-    @Update
-    fun updateCrime(photo: GalleryItem)
+    suspend fun delPhotos()
 
     @Insert
-    fun addCrime(photo: GalleryItem)
+    fun addCrime(galleryItem: GalleryItem)
 }

@@ -15,7 +15,6 @@ class PhotoGalleryApplication : Application() {
         context = applicationContext
         PhotoRepository.initialize(this)
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.notification_channel_name)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
