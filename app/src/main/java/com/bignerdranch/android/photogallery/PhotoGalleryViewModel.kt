@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class PhotoGalleryViewModel(private val app: Application) : AndroidViewModel(app) {
 
-    val photoRepository : PhotoRepository = PhotoRepository.get()
+    //val photoRepository : PhotoRepository = PhotoRepository.get()
     val galleryItemLiveData : LiveData<List<GalleryItem>>
     private val flickrFetchr = FlickrFetchr()
     private val mutableSearchTerm = MutableLiveData<String>()

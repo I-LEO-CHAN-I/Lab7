@@ -28,7 +28,7 @@ class PhotoRepository private constructor(context: Context) {
 
     fun addPhoto(galleryItem: GalleryItem) {
         executor.execute {
-            photoDao.addCrime(galleryItem)
+            photoDao.addPhoto(galleryItem)
         }
     }
 
